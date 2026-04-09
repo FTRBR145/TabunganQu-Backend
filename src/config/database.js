@@ -12,11 +12,19 @@ const connectDB = async () => {
   }
 };
 
+const getDB = () => {
+  if (!connection) {
+    throw new Error("Database belum connect!");
+  }
+  return connection;
+};
+
 const testConnection = async () => {
   await connectDB();
 };
 
 module.exports = {
-  connection,
-  testConnection
+  connectDB,
+  testConnection,
+  getDB
 };
